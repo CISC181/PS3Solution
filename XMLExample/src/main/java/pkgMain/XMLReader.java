@@ -12,44 +12,39 @@ import pkgLibrary.Catalog;
 
 public class XMLReader {
 
-	public static void main(String[] args) {
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * Catalog cat = null;
+	 * 
+	 * // Read the XML catalog into 'cat' cat = ReadCatalog();
+	 * 
+	 * // Increase the price of each book IncreasePrice(cat,0.10);
+	 * 
+	 * // Write the XML file from 'cat' object WriteXMLFile(cat);
+	 * 
+	 * }
+	 */
 
-		Catalog cat = null;
-		
-		//	Read the XML catalog into 'cat'
-		cat = ReadCatalog();
-		
-		//	Increase the price of each book
-		IncreasePrice(cat,0.10);
-		
-		//	Write the XML file from 'cat' object
-		WriteXMLFile(cat);
-		
-	}
-
-
-	
-	
-	private static Catalog ReadCatalog() {
+	public static Catalog ReadCatalog() {
 		Catalog cat = ReadXMLFile();
-		
+
 		System.out.println("cat ID " + cat.getId());
 		System.out.println("Book count: " + cat.getBooks().size());
 
-		return cat;		
-	}
-
-	private static Catalog IncreasePrice(Catalog cat, double PriceIncrease)
-	{
-		for (Book b : cat.getBooks()) {
-			double newPrice = (b.getPrice() * PriceIncrease) + b.getPrice();			
-			b.setPrice(Math.round(newPrice * 100.0) / 100.0);
-		}
-		
 		return cat;
 	}
-	
-	private static void WriteXMLFile(Catalog cat) {
+
+	private static Catalog IncreasePrice(Catalog cat, double PriceIncrease) {
+		for (Book b : cat.getBooks()) {
+			double newPrice = (b.getPrice() * PriceIncrease) + b.getPrice();
+			b.setPrice(Math.round(newPrice * 100.0) / 100.0);
+		}
+
+		return cat;
+	}
+
+	public static void WriteXMLFile(Catalog cat) {
 		try {
 
 			String basePath = new File("").getAbsolutePath();
@@ -70,7 +65,7 @@ public class XMLReader {
 		}
 	}
 
-	private static Catalog ReadXMLFile() {
+	public static Catalog ReadXMLFile() {
 
 		Catalog cat = null;
 
